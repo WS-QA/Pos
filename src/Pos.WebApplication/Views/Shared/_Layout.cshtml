@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    @(await Component.InvokeAsync("Header"))
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="fixed-left">
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="spinner-wrapper">
+                    <div class="rotator">
+                        <div class="inner-spin"></div>
+                        <div class="inner-spin"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+        <!-- Top Bar Start -->
+        @(await Component.InvokeAsync("TopBar"))
+        <!-- Top Bar End -->
+        <!-- ========== Left Sidebar Start ========== -->
+        @(await Component.InvokeAsync("Menu"))
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container">
+                    @RenderBody()
+                </div> <!-- container -->
+            </div> <!-- content -->
+        </div>
+        <!-- end right Content here -->
+
+        @(await Component.InvokeAsync("Footer"))
+        @(await Component.InvokeAsync("RightSidebar"))
+    </div>
+    <!-- END wrapper -->
+    @(await Component.InvokeAsync("ThemeScripts"))
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
